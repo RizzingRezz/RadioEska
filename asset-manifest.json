@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/RadioEska/static/css/main.1aea302f.css",
-    "main.js": "/RadioEska/static/js/main.a644efdb.js",
+    "main.js": "/RadioEska/static/js/main.728020c9.js",
     "index.html": "/RadioEska/index.html",
     "main.1aea302f.css.map": "/RadioEska/static/css/main.1aea302f.css.map",
-    "main.a644efdb.js.map": "/RadioEska/static/js/main.a644efdb.js.map"
+    "main.728020c9.js.map": "/RadioEska/static/js/main.728020c9.js.map"
   },
   "entrypoints": [
     "static/css/main.1aea302f.css",
-    "static/js/main.a644efdb.js"
+    "static/js/main.728020c9.js"
   ]
 }

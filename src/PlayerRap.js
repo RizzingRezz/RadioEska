@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import ReactHlsPlayer from "@ducanh2912/react-hls-player";
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
 import PauseCircleFilledIcon from '@mui/icons-material/PauseCircleFilled';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
-function PlayerRap() {
+function PlayerRap({name,artist,image}) {
     const [isPlayed, setIsPlayed] = useState(true)
     const handlePlayed = () => {
         if (isPlayed) {
@@ -28,11 +28,13 @@ function PlayerRap() {
         console.log(isPlayed)
     }
     return (
-        <div className='content'>
+        <div className='player'>
+            <Box component="img" sx={{height:"180px", width:"180px",borderRadius: "15px" }}  alt="Eska RAP 20" src={image}/>
+            <br/>
             {isPlayed ?
-                <PlayCircleFilledWhiteIcon sx={{ color: "#eb7d2b", width: '75px', height: '75px' }} onClick={playVideo} />
+                <PlayCircleFilledWhiteIcon sx={{ color: "#eb7d2b", width: '60px', height: '60px' }} onClick={playVideo} />
                 :
-                <PauseCircleFilledIcon sx={{ color: "#eb7d2b", width: '75px', height: '75px' }} onClick={pauseVideo} />
+                <PauseCircleFilledIcon sx={{ color: "#eb7d2b", width: '60px', height: '60px' }} onClick={pauseVideo} />
             }
             <ReactHlsPlayer
                 src="https://radio.stream.smcdn.pl/icradio-p/6190-1.aac/playlist.m3u8"
@@ -42,7 +44,8 @@ function PlayerRap() {
                 playerRef={playerRef}
                 style={{ display: "none" }}
             />
-            <Box component="img" sx={{marginLeft:{md:'200px', sm:'100px', xs:'75px'}, height:"180px", width:"180px" }}  alt="Eska: Hity na czasy" src="https://cdn.music.smcloud.net/t/cover/b17cfca3-ce38-466b-bb04-570f6e8f8f0f_gf-WFey-K5xB-QSFE_eska-rap_500x500.jpg"/>
+            <Typography id="title">{name}</Typography>
+            <Typography id="artist">{artist}</Typography>
         </div>
 
   )

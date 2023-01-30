@@ -3,8 +3,9 @@ import ReactHlsPlayer from "@ducanh2912/react-hls-player";
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
 import PauseCircleFilledIcon from '@mui/icons-material/PauseCircleFilled';
 import { Box } from '@mui/system';
+import { Typography } from '@mui/material';
 
-function Player({link}) {
+function Player({link,name,artist,image}) {
     const [isPlayed, setIsPlayed] = useState(true)
     const handlePlayed = () => {
         if (isPlayed) {
@@ -28,11 +29,13 @@ function Player({link}) {
         console.log(isPlayed)
     }
     return (
-        <div className='content'>
+        <div className='player'>
+            <Box component="img" sx={{height:"180px", width:"180px",borderRadius: "15px" }}  alt="Eska: Hity na czasy" src={image}/>
+            <br/>
             {isPlayed ?
-                <PlayCircleFilledWhiteIcon sx={{ color: "#eb7d2b", width: '75px', height: '75px' }} onClick={playVideo} />
+                <PlayCircleFilledWhiteIcon sx={{ color: "#eb7d2b", width: '60px', height: '60px' }} onClick={playVideo} />
                 :
-                <PauseCircleFilledIcon sx={{ color: "#eb7d2b", width: '75px', height: '75px' }} onClick={pauseVideo} />
+                <PauseCircleFilledIcon sx={{ color: "#eb7d2b", width: '60px', height: '60px' }} onClick={pauseVideo} />
             }
             <ReactHlsPlayer
                 src={link}
@@ -42,8 +45,8 @@ function Player({link}) {
                 playerRef={playerRef}
                 style={{ display: "none" }}
             />
-            
-            <Box component="img" sx={{marginLeft:{md:'200px', sm:'100px', xs:'75px'}, height:"180px", width:"180px" }}  alt="Eska: Hity na czasy" src="https://cdn.music.smcloud.net/t/cover/602854b3-a955-4737-9588-ea963676f73c_ESKA_radio_500x500_500x500.jpg"/>
+            <Typography id="title">{name}</Typography>
+            <Typography id="artist">{artist}</Typography>
         </div>
 
     );

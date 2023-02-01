@@ -1,9 +1,8 @@
 {
   "name": "eska",
   "version": "0.1.0",
-  "homepage": "https://rizzingrezz.github.io/RadioEska",
+  "homepage": "https://damien.lensalex.fr",
   "private": true,
-  "proxy": "https://www.eska.pl/",
   "dependencies": {
     "@ducanh2912/react-hls-player": "^3.3.3",
     "@emotion/react": "^11.10.4",

@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
 import Navbar from './Navbar';
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Goraca20 from './Goraca20';
 import Rap20 from './Rap20';
 import Impreska from './Impreska';

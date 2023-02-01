@@ -12,53 +12,34 @@ function Dom({ link, city }) {
   const [artist, setArtist] = useState()
   const [image, setImage] = useState("https://cdn.music.smcloud.net/t/cover/602854b3-a955-4737-9588-ea963676f73c_ESKA_radio_500x500_500x500.jpg")
 
-  async function getCurrentSong() {
+  async function getCurrentSong(){
     var linkApi = link.slice(40,44)
-    const response = await axios.get(`/api/mobile/station/${linkApi}/now_playing`, { headers: { "Access-Control-Allow-Origin": "*", 'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS' } })
+    const response = await axios.get(`https://damien.lensalex.fr:3000/eska?radio=${linkApi}`)
     if (response.status === 200) {
-      var endTime = new Date(response.data[3].end_time)
-      var now = new Date(Date.now())
-      var artists = ""
-      if (endTime <= now) {
-        var thumb = response.data[2].thumb
-        var names = response.data[2].name
-        setName(response.data[2].name)
-        response.data[2].artists.map((item, index) => {
+      console.log(response)
+      var thumb = response.data.thumb
+      var names = response.data.name
+        setName(response.data.name)
+        var artists
+        response.data.artists.map((item, index) => {
           artists += item.name + ", "
           return artists
         })
         artists = artists.slice(0, -2);
+        artists = artists.replace("undefined","");
         setArtist(artists)
-        if(response.data[3].image !== null){
-          setImage(response.data[2].image)
+        if(response.data.image !== null){
+          setImage(response.data.image)
         }else{
           setImage("https://cdn.music.smcloud.net/t/cover/602854b3-a955-4737-9588-ea963676f73c_ESKA_radio_500x500_500x500.jpg")
         }
         updateMetaData(names,artists, image,thumb)
       } else {
-        thumb = response.data[3].thumb
-        names = response.data[3].name
-        setName(response.data[3].name)
-        response.data[3].artists.map((item, index) => {
-          artists += item.name + ", "
-          return artists
-        })
-        artists = artists.slice(0, -2);
-        setArtist(artists)
-        if(response.data[3].image !== null){
-          setImage(response.data[3].image)
-        }else{
-          setImage("https://cdn.music.smcloud.net/t/cover/602854b3-a955-4737-9588-ea963676f73c_ESKA_radio_500x500_500x500.jpg")
-        }
-        
-        updateMetaData(names,artists, image,thumb)
+        console.error("Something went wrong");
       }
-      
-    } else {
-      console.error("Something went wrong");
-    }
-    setTimeout(getCurrentSong, 10 * 1000)
+      setTimeout(getCurrentSong, 10 * 1000)
   }
+
   function updateMetaData(nazywa,artyst,image,thumb) {
     navigator.mediaSession.metadata= null
     navigator.mediaSession.metadata = new MediaMetadata({

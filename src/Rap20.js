@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import PlayerRap from './PlayerRap'
 import axios from 'axios';
+import { Typography } from '@mui/material';
 
 function Rap20() {
   useEffect(() => {
@@ -12,7 +13,7 @@ function Rap20() {
   const [image, setImage] = useState("https://cdn.music.smcloud.net/t/cover/b17cfca3-ce38-466b-bb04-570f6e8f8f0f_gf-WFey-K5xB-QSFE_eska-rap_500x500.jpg")
 
   async function getCurrentSong(){
-    const response = await axios.get("http://localhost:8082/test?radio=6190")
+    const response = await axios.get("https://damien.lensalex.fr:3000/eska?radio=6190")
     if (response.status === 200) {
       console.log(response)
       var thumb = response.data.thumb
@@ -53,6 +54,7 @@ function Rap20() {
   document.title = "Rap 20 - ESKA";
   return (
     <>
+      <Typography sx={{color: "#eb7d2b", py:2}}>Słuchaj Rap 20</Typography>
       <PlayerRap name={name} artist={artist} image={image} />
     </>
   )

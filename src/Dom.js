@@ -2,18 +2,18 @@ import { Box, Grid, Stack, Typography } from '@mui/material';
 import React, { useEffect } from 'react'
 import Player from './Player'
 
-function Dom({ link, city,defineRadio,name,artist,image}) {
+function Dom({ link, city, defineRadio, name, artist, image }) {
   useEffect(() => {
     radio()
-  }, )
-  const radio = async() => {
-    var linkApi = link.slice(40,44)
+  },)
+  const radio = async () => {
+    var linkApi = link.slice(40, 44)
     defineRadio(linkApi)
   }
   document.title = "Radio Eska";
   return (
     <>
-      <Typography sx={{color: "#eb7d2b", py:2}}>Słuchaj Radio Eska {city}</Typography>
+      <Typography sx={{ color: "#eb7d2b", py: 2 }}>Słuchaj Radio Eska {city}</Typography>
       <Player link={link} name={name[1]} artist={artist[1]} image={image[1]} />
       <div >
         <Grid sx={{ minWidth: "200px", margin: '0 auto', width: '200px' }} item xs={6} md={6}>

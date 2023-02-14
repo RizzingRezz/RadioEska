@@ -6,7 +6,7 @@ import { Box } from '@mui/system';
 import { Typography } from '@mui/material';
 import ReactPlayer from 'react-player';
 
-function Player({link,name,artist,image}) {
+function Player({ link, name, artist, image }) {
     // const [isPlayed, setIsPlayed] = useState(true)
     // const handlePlayed = () => {
     //     if (isPlayed) {
@@ -42,21 +42,20 @@ function Player({link,name,artist,image}) {
     }
     return (
         <div className='player'>
-            <Box component="img" sx={{height:"180px", width:"180px",borderRadius: "15px" }}  alt="Eska: Hity na czasy" src={image}/>
-            <br/>
+            <Box component="img" sx={{ height: "180px", width: "180px", borderRadius: "15px" }} alt="Eska: Hity na czasy" src={image} />
+            <br />
             {isPlayed ?
                 <PauseCircleFilledIcon sx={{ color: "#eb7d2b", width: '60px', height: '60px' }} onClick={handlePauseClick} />
                 :
-                
                 <PlayCircleFilledWhiteIcon sx={{ color: "#eb7d2b", width: '60px', height: '60px' }} onClick={handlePlayClick} />
             }
             <ReactPlayer
-                    playing={playing}
-                    url={link}
-                    controls
-                    playsinline
-                    preload="metadata"
-                    style={{ display: "none" }}
+                playing={playing}
+                url={link}
+                controls
+                playsinline
+                preload="metadata"
+                style={{ display: "none" }}
             />
             {/* <ReactHlsPlayer
                 src={link}

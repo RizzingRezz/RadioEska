@@ -69,8 +69,8 @@ function App() {
       setImage(images)
       setArtist(artistsTab)
       updateMetaData(names[1], artistsTab[1], images[1], thumb[1])
-      
-      
+
+
     } else {
       console.error("Something went wrong");
     }

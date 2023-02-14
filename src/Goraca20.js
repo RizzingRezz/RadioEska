@@ -2,20 +2,20 @@ import { Box, Grid, Stack, Typography } from '@mui/material'
 import React, { useEffect } from 'react'
 import PlayerGoraca from './PlayerGoraca'
 
-function Goraca20({defineRadio,name,artist,image}) {
+function Goraca20({ defineRadio, name, artist, image }) {
   useEffect(() => {
     radio()
-  }, )
-  const radio = async() => {
+  },)
+  const radio = async () => {
     defineRadio("6130")
   }
 
   document.title = "Gorąca 20 - ESKA";
   return (
     <>
-    <Typography sx={{color: "#eb7d2b", py:2}}>Słuchaj Gorąca 20</Typography>
-    <PlayerGoraca name={name[1]} artist={artist[1]} image={image[1]} />
-    <div >
+      <Typography sx={{ color: "#eb7d2b", py: 2 }}>Słuchaj Gorąca 20</Typography>
+      <PlayerGoraca name={name[1]} artist={artist[1]} image={image[1]} />
+      <div >
         <Grid sx={{ minWidth: "200px", margin: '0 auto', width: '200px' }} item xs={6} md={6}>
           <Typography sx={{ fontSize: '18px', padding: 2 }}>Następny</Typography>
           <Stack direction="row" spacing={2}>
@@ -108,7 +108,7 @@ function Goraca20({defineRadio,name,artist,image}) {
         </Grid>
       </div>
     </>
-    
+
   )
 }
 

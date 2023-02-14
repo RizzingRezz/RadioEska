@@ -19,13 +19,11 @@ function PlayerRap({name,artist,image}) {
     function playVideo() {
         playerRef.current.play();
         handlePlayed()
-        console.log(isPlayed)
     }
 
     function pauseVideo() {
         playerRef.current.pause();
         handlePlayed()
-        console.log(isPlayed)
     }
     return (
         <div className='player'>
@@ -39,7 +37,7 @@ function PlayerRap({name,artist,image}) {
             <ReactHlsPlayer
                 src="https://radio.stream.smcdn.pl/icradio-p/6190-1.aac/playlist.m3u8"
                 playsInline
-                author="Test"
+                preload="metadata"
                 autoPlay={false}
                 playerRef={playerRef}
                 style={{ display: "none" }}

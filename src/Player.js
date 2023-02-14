@@ -20,13 +20,11 @@ function Player({link,name,artist,image}) {
     function playVideo() {
         playerRef.current.play();
         handlePlayed()
-        console.log(isPlayed)
     }
 
     function pauseVideo() {
         playerRef.current.pause();
         handlePlayed()
-        console.log(isPlayed)
     }
     return (
         <div className='player'>
@@ -40,7 +38,7 @@ function Player({link,name,artist,image}) {
             <ReactHlsPlayer
                 src={link}
                 playsInline
-                author="Test"
+                preload="metadata"
                 autoPlay={false}
                 playerRef={playerRef}
                 style={{ display: "none" }}

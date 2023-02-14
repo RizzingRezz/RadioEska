@@ -28,7 +28,7 @@ function App() {
 
   async function getCurrentSong() {
     clearTimeout(time)
-    const response = await axios.get(`https://damien.lensalex.fr:3000/eska?radio=${radio}`)
+    const response = await axios.get(`https://eska.vedani.ovh:3000/eska?radio=${radio}`)
     // const response = await axios.get(`http://192.168.109.184:8082/test?radio=${radio}`)
     if (response.status === 200) {
       var images = []

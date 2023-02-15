@@ -81,16 +81,31 @@ function App() {
   }
 
   function updateMetaData(nazywa, artyst, image, thumb) {
+    var album
+    switch (radio) {
+      case "6130":
+        album = "Gorąca 20";
+        break;
+      case "6030":
+        album = "Impreska";
+        break;
+      case "6190":
+        album = "Rap 20";
+        break;
+      default:
+        album = "Radio ESKA " + city;
+    }
     navigator.mediaSession.metadata = null
     navigator.mediaSession.metadata = new MediaMetadata({
       title: nazywa,
       artist: artyst,
-      album: "Radio Eska",
+      album: album,
       artwork: [
         { src: thumb, sizes: '100x100', type: 'image/jpg' },
         { src: image, sizes: '664x664', type: 'image/jpg' },
       ]
     });
+    console.log(navigator.mediaSession.metadata)
   }
 
   const [link, setLink] = useState("https://radio.stream.smcdn.pl/icradio-p/2380-1.aac/playlist.m3u8");
@@ -105,9 +120,9 @@ function App() {
         <Navbar handleChange={handleChange} link={link} />
         <Routes>
           <Route path='/' exact element={<Dom link={link} city={city} defineRadio={defineRadio} name={name} artist={artist} image={image} />} />
-          <Route path='/goraca20' exact element={<Goraca20 city={city} defineRadio={defineRadio} name={name} artist={artist} image={image} />} />
-          <Route path='/rap20' exact element={<Rap20 city={city} defineRadio={defineRadio} name={name} artist={artist} image={image} />} />
-          <Route path='/eskaImpreska' exact element={<Impreska city={city} defineRadio={defineRadio} name={name} artist={artist} image={image} />} />
+          <Route path='/goraca20' exact element={<Goraca20 defineRadio={defineRadio} name={name} artist={artist} image={image} />} />
+          <Route path='/rap20' exact element={<Rap20 defineRadio={defineRadio} name={name} artist={artist} image={image} />} />
+          <Route path='/eskaImpreska' exact element={<Impreska defineRadio={defineRadio} name={name} artist={artist} image={image} />} />
         </Routes>
       </Router>
     </div>

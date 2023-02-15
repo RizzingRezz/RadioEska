@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import PlayerRap from './PlayerRap'
 import { Grid, Typography } from '@mui/material';
 import { Box, Stack } from '@mui/system';
+import Player from './Player';
 
 function Rap20({ defineRadio, name, artist, image }) {
   useEffect(() => {
@@ -14,7 +14,7 @@ function Rap20({ defineRadio, name, artist, image }) {
   return (
     <>
       <Typography sx={{ color: "#eb7d2b", py: 2 }}>Słuchaj Rap 20</Typography>
-      <PlayerRap name={name[1]} artist={artist[1]} image={image[1]} />
+      <Player link="https://radio.stream.smcdn.pl/icradio-p/6190-1.aac/playlist.m3u8" name={name[1]} artist={artist[1]} image={image[1]} />
       <div >
         <Grid sx={{ minWidth: "200px", margin: '0 auto', width: '200px' }} item xs={6} md={6}>
           <Typography sx={{ fontSize: '18px', padding: 2 }}>Następny</Typography>

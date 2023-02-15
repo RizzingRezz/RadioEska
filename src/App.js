@@ -105,7 +105,6 @@ function App() {
         { src: image, sizes: '664x664', type: 'image/jpg' },
       ]
     });
-    console.log(navigator.mediaSession.metadata)
   }
 
   const [link, setLink] = useState("https://radio.stream.smcdn.pl/icradio-p/2380-1.aac/playlist.m3u8");

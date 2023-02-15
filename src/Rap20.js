@@ -17,7 +17,7 @@ function Rap20({ defineRadio, name, artist, image }) {
       <Player link="https://radio.stream.smcdn.pl/icradio-p/6190-1.aac/playlist.m3u8" name={name[1]} artist={artist[1]} image={image[1]} />
       <div >
         <Grid sx={{ minWidth: "200px", margin: '0 auto', width: '200px' }} item xs={6} md={6}>
-          <Typography sx={{ fontSize: '18px', padding: 2 }}>Następny</Typography>
+          <Typography sx={{ fontSize: '18px', padding: 2 }}>Następna</Typography>
           <Stack direction="row" spacing={2}>
             <div>
               <Box

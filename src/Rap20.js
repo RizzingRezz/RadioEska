@@ -1,15 +1,49 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Grid, Typography } from '@mui/material';
 import { Box, Stack } from '@mui/system';
 import Player from './Player';
+import axios from 'axios';
 
 function Rap20({ defineRadio, name, artist, image }) {
   useEffect(() => {
     radio()
   },)
+  const [lyrics, setLyrics] = useState("")
+  const [isShowed, setIsShowed] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [oldName, setOldName] = useState("")
+
   const radio = async () => {
     defineRadio("6190")
   }
+
+  async function getLyrics() {
+    setIsLoading(true)
+    console.log("old: ", oldName)
+    console.log("cuurent: ", name[1])
+    if (oldName === name[1]) {
+      console.log("ne pas refaire")
+      setIsShowed(true)
+      setIsLoading(false)
+    } else {
+      console.log("refaire")
+      const response = await axios.get("http://localhost:8082/genius?search=" + name[1] + artist[1])
+      if (response.status === 200) {
+        setIsLoading(false)
+        setLyrics(response.data.result)
+        setIsShowed(true)
+        setOldName(name[1])
+      } else {
+        console.log("Something went wrong")
+      }
+    }
+
+  }
+
+  function handleHide() {
+    setIsShowed(false)
+  }
+
   document.title = "Rap 20 - ESKA";
   return (
     <>
@@ -107,6 +141,19 @@ function Rap20({ defineRadio, name, artist, image }) {
           </Stack>
         </Grid>
       </div>
+      <br /><br />
+      {isShowed ?
+        <>
+          <button onClick={handleHide} >Ukryj</button>
+          <div id='lyrics' dangerouslySetInnerHTML={{ __html: lyrics }} />
+        </>
+        :
+        <>
+          <button onClick={getLyrics} disabled={isLoading}>Zobac tekst</button>
+        </>
+      }
+
+      <br /><br /><br />
     </>
   )
 }

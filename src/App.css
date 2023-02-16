@@ -35,6 +35,13 @@
   border-radius: 25px;
 }
 
+#lyrics a {
+  text-decoration: none;
+  color: black;
+  cursor: text;
+  pointer-events: none;
+}
+
 #title {
   color: #383838;
   text-transform: capitalize;

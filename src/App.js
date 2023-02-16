@@ -10,17 +10,18 @@ import axios from 'axios';
 
 function App() {
   const [radio, setRadio] = useState("")
+  const [name, setName] = useState([])
+  const [artist, setArtist] = useState([])
+  const [image, setImage] = useState([])
+  const [time, setTime] = useState()
+
   useEffect(() => {
     if (radio !== "") {
       getCurrentSong()
     }
     // eslint-disable-next-line 
   }, [radio])
-
-  const [name, setName] = useState([])
-  const [artist, setArtist] = useState([])
-  const [image, setImage] = useState([])
-  const [time, setTime] = useState()
+  
 
   const defineRadio = (result) => {
     setRadio(result)
@@ -69,14 +70,13 @@ function App() {
       setImage(images)
       setArtist(artistsTab)
       updateMetaData(names[1], artistsTab[1], images[1], thumb[1])
-
-
     } else {
       console.error("Something went wrong");
     }
 
     var timeId = setTimeout(getCurrentSong, 10 * 1000)
     setTime(timeId)
+    console.log(timeId)
 
   }
 

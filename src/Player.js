@@ -1,39 +1,36 @@
-import React, { useState } from 'react';
-// import ReactHlsPlayer from "@ducanh2912/react-hls-player";
+import React, { useEffect, useState } from 'react';
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
 import PauseCircleFilledIcon from '@mui/icons-material/PauseCircleFilled';
 import { Box } from '@mui/system';
-import { Typography } from '@mui/material';
+import { Typography, Slider } from '@mui/material';
 import ReactPlayer from 'react-player';
 
 function Player({ link, name, artist, image }) {
-    // const [isPlayed, setIsPlayed] = useState(true)
-    // const handlePlayed = () => {
-    //     if (isPlayed) {
-    //         setIsPlayed(false);
-    //     }
-    //     if (!isPlayed) {
-    //         setIsPlayed(true)
-    //     }
-    // }
-    // const playerRef = React.useRef();
-
-    // function playVideo() {
-    //     playerRef.current.play();
-    //     handlePlayed()
-    // }
-
-    // function pauseVideo() {
-    //     playerRef.current.pause();
-    //     handlePlayed()
-    // }
     const [isPlayed, setIsPlayed] = useState(false)
     const [playing, setPlaying] = useState(false)
+    const [volume, setVolume] = useState(1);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     function handlePlayClick() {
         setIsPlayed(true)
 
         setPlaying(true)
+    }
+
+    function handleVolumeChange(event, newValue) {
+        setVolume(newValue);
     }
 
     function handlePauseClick() {
@@ -55,16 +52,21 @@ function Player({ link, name, artist, image }) {
                 controls
                 playsinline
                 preload="metadata"
+                volume={volume}
                 style={{ display: "none" }}
             />
-            {/* <ReactHlsPlayer
-                src={link}
-                playsInline
-                preload="metadata"
-                autoPlay={false}
-                playerRef={playerRef}
-                style={{ display: "none" }}
-            /> */}
+            <br />
+            {windowWidth >= 960 && (
+                <Slider
+                    value={volume}
+                    onChange={handleVolumeChange}
+                    min={0}
+                    max={1}
+                    step={0.01}
+                    aria-labelledby="continuous-slider"
+                    sx={{ width: 100, color: "#eb7d2b" }}
+                />
+            )}
             <Typography id="title">{name}</Typography>
             <Typography id="artist">{artist}</Typography>
         </div>
